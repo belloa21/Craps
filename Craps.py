@@ -34,24 +34,25 @@ def play_game():
             print("We don't take kindly to jokers round here, make a REAL bet.")
             bet = int(input())
         first_role = roll_dice()
-        print(f'You rolled a {first_role}.')
+        print(f"You rolled a {first_role}.")
         if first_role == 7 or first_role == 11:
-            print('You won!')
+            print("You won!")
             bankroll += bet
             play = play_again()
             continue
         elif first_role in [2, 3, 12,]:
-            print('You loose.')
+            print("You loose.")
             bankroll -= bet
             play = play_again()
             continue
         else:
             points = first_role
             print('Now things get complicated.')
-            # Explain rules here.
+            print("""Now you gotta roll these dice until you get a seven or match what you just rolled
+            so have fun kiddos.""")
             next_role = roll_dice()
             if next_role == first_role:
-                print('You win!')
+                print("You win!")
                 bankroll += bet
                 play = play_again()
                 continue
@@ -59,13 +60,13 @@ def play_game():
                 next_role = roll_dice()
                 print(next_role)
                 if next_role == 7:
-                    print('You loose.')
+                    print("You loose.")
                     bankroll -= bet
                     play = play_again()
                     break
             if next_role == 7:
                 continue
-            print('You won!')
+            print("You won!")
             bankroll += bet
             play = play_again()
             continue
